@@ -13,6 +13,7 @@ export default new Vuex.Store({
     isLogin: false,
     isLoginError: false,
   },
+  getters: {},
   mutations: {},
   actions: {},
 });
