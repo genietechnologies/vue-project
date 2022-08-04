@@ -11,7 +11,7 @@
           </v-list-item-content>
         </v-list-item>
         <v-list-item
-          v-if="isLogin === false"
+          v-if="$store.state.isLogin === false"
           router
           :to="{ name: 'login' }"
           exact
@@ -32,7 +32,7 @@
           </v-list-item-content>
         </v-list-item>
         <v-list-item
-          v-if="isLogin === false"
+          v-if="$store.state.isLogin === false"
           router
           :to="{ name: 'join' }"
           exact
@@ -44,12 +44,14 @@
             <v-list-item-title>회원가입</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item v-else router :to="{ name: 'logout' }" exact>
+        <v-list-item v-else exact style="cursor: pointer">
           <v-list-item-action>
             <v-icon>person</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>로그아웃</v-list-item-title>
+            <v-list-item-title @click="$store.dispatch('logoutAction')"
+              >로그아웃</v-list-item-title
+            >
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -59,7 +61,7 @@
       <v-app-bar-title>Genie</v-app-bar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-menu offset-y v-if="isLogin">
+        <!-- <v-menu offset-y v-if="$store.state.isLogin">
           <template v-slot:activator="{ on, attrs }">
             <v-btn dark text v-bind="attrs" v-on="on" icon>
               <v-icon>dots-vertical</v-icon>
@@ -69,16 +71,21 @@
             <v-list-item router :to="{ name: 'mypage' }">
               <v-list-item-title>마이페이지</v-list-item-title>
             </v-list-item>
-            <v-list-item @click="$store.dispatch('logout')">
+            <v-list-item @click="$store.dispatch('logoutAction')">
               <v-list-item-title>로그아웃</v-list-item-title>
             </v-list-item>
           </v-list>
-        </v-menu>
-        <v-btn text v-if="isLogin" router :to="{ name: 'mypage' }"
+        </v-menu> -->
+        <v-btn text v-if="$store.state.isLogin" router :to="{ name: 'mypage' }"
           >마이페이지</v-btn
         >
         <v-btn text v-else router :to="{ name: 'login' }">로그인</v-btn>
-        <v-btn text v-if="isLogin">로그아웃</v-btn>
+        <v-btn
+          text
+          v-if="$store.state.isLogin"
+          @click="$store.dispatch('logoutAction')"
+          >로그아웃</v-btn
+        >
         <v-btn text v-else router :to="{ name: 'join' }">회원가입</v-btn>
       </v-toolbar-items>
     </v-app-bar>
@@ -97,7 +104,6 @@ export default {
 
   data: () => ({
     drawer: false,
-    isLogin: false,
   }),
 };
 </script>
