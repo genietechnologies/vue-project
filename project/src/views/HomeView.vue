@@ -12,8 +12,8 @@ export default {
     HelloWorld,
   },
   created() {
-    console.log(`아이디 총 갯수: ${this.$store.state.allUsers.length}`);
-    this.$store.state.allUsers.forEach((user) => {
+    console.log(`아이디 총 갯수: ${this.$store.state.login.allUsers.length}`);
+    this.$store.state.login.allUsers.forEach((user) => {
       console.log(user.id);
     });
   },

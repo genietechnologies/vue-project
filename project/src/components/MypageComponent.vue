@@ -8,21 +8,24 @@
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-title
-                  >아이디 : {{ userInfo.id }}</v-list-item-title
+                  >아이디 :
+                  {{ $store.state.login.userInfo.id }}</v-list-item-title
                 >
               </v-list-item-content>
             </v-list-item>
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-title
-                  >이름 : {{ userInfo.name }}</v-list-item-title
+                  >이름 :
+                  {{ $store.state.login.userInfo.name }}</v-list-item-title
                 >
               </v-list-item-content>
             </v-list-item>
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-title
-                  >이메일 : {{ userInfo.email }}</v-list-item-title
+                  >이메일 :
+                  {{ $store.state.login.userInfo.email }}</v-list-item-title
                 >
               </v-list-item-content>
             </v-list-item>
@@ -33,10 +36,5 @@
   </v-app>
 </template>
 <script>
-import { mapState } from "vuex";
-export default {
-  computed: {
-    ...mapState(["userInfo"]),
-  },
-};
+export default {};
 </script>

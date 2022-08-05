@@ -27,8 +27,6 @@
   </v-app>
 </template>
 <script>
-import { mapActions } from "vuex";
-
 export default {
   data() {
     return {
@@ -41,8 +39,8 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["addUserAction"]),
     signUp() {
+      // 회원가입 이벤트 실행
       let userObj = {
         id: this.id,
         password: this.password,
@@ -51,15 +49,15 @@ export default {
       };
       this.validations = null;
       this.isDuplicated = false;
-      console.log(this.validations, this.isDuplicated);
       this.validationCheck(userObj);
       if (this.validations === 3) {
-        this.addUserAction(userObj);
+        this.$store.dispatch("addUserAction", userObj, { root: true });
         this.clearForm();
         this.$router.push({ name: "home" });
       }
     },
     clearForm() {
+      // 폼 초기화
       (this.id = null),
         (this.password = null),
         (this.name = null),
@@ -80,6 +78,7 @@ export default {
         data.email === ""
       ) {
         return (this.validations = 1);
+        // 1은 필수입력, 2는 아이디중복, 3은 유효성통과
       } else if (this.isDuplicated === true) {
         return (this.validations = 2);
       } else {
@@ -87,7 +86,8 @@ export default {
       }
     },
     duplicationCheck(data) {
-      this.$store.state.allUsers.forEach((user) => {
+      // 아이디 중복체크
+      this.$store.state.login.allUsers.forEach((user) => {
         if (user.id === data.id) this.isDuplicated = true;
       });
     },
