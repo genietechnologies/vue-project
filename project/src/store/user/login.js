@@ -26,6 +26,9 @@ export default {
       state.isLoginError = false;
       state.userInfo = null;
     },
+    addUsers: (state, payload) => {
+      state.allUsers.push(payload);
+    },
   },
   actions: {
     loginAction: ({ commit, state }, payload) => {
@@ -43,7 +46,7 @@ export default {
     logoutAction: ({ commit }) => {
       if (confirm("정말 로그아웃 하시겠습니까?")) {
         commit("logout");
-        router.push({ name: "home" });
+        router.push({ name: "home" }).catch(() => {});
       }
     },
   },

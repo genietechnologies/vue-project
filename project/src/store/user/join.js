@@ -1,11 +1,7 @@
 export default {
   state: {},
   getters: {},
-  mutations: {
-    addUsers: (state, payload) => {
-      state.login.allUsers.push(payload);
-    },
-  },
+  mutations: {},
   actions: {
     addUserAction: ({ commit }, payload) => {
       commit("addUsers", payload);

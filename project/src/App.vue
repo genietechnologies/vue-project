@@ -11,7 +11,7 @@
           </v-list-item-content>
         </v-list-item>
         <v-list-item
-          v-if="$store.state.isLogin === false"
+          v-if="$store.state.login.isLogin === false"
           router
           :to="{ name: 'login' }"
           exact
@@ -32,7 +32,7 @@
           </v-list-item-content>
         </v-list-item>
         <v-list-item
-          v-if="$store.state.isLogin === false"
+          v-if="$store.state.login.isLogin === false"
           router
           :to="{ name: 'join' }"
           exact
@@ -76,13 +76,17 @@
             </v-list-item>
           </v-list>
         </v-menu> -->
-        <v-btn text v-if="$store.state.isLogin" router :to="{ name: 'mypage' }"
+        <v-btn
+          text
+          v-if="$store.state.login.isLogin"
+          router
+          :to="{ name: 'mypage' }"
           >마이페이지</v-btn
         >
         <v-btn text v-else router :to="{ name: 'login' }">로그인</v-btn>
         <v-btn
           text
-          v-if="$store.state.isLogin"
+          v-if="$store.state.login.isLogin"
           @click="$store.dispatch('logoutAction')"
           >로그아웃</v-btn
         >
