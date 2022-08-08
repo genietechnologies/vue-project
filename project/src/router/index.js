@@ -47,6 +47,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "join" */ "../views/JoinView.vue"),
   },
+  {
+    path: "/table",
+    name: "table",
+    component: () =>
+      import(/* webpackChunkName: "table" */ "../views/TableView.vue"),
+  },
 ];
 
 const router = new VueRouter({

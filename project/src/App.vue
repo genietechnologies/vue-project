@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" fixed app>
+    <v-navigation-drawer v-model="drawer" expand-on-hover mini-variant app>
       <v-list dense>
         <v-list-item router :to="{ name: 'home' }" exact>
           <v-list-item-action>
@@ -54,6 +54,14 @@
             >
           </v-list-item-content>
         </v-list-item>
+        <v-list-item router :to="{ name: 'table' }" exact>
+          <v-list-item-action>
+            <v-icon>mdi-list-box</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>데이터 목록</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar color="indigo" dark fixed app>
@@ -76,6 +84,7 @@
             </v-list-item>
           </v-list>
         </v-menu> -->
+        <v-btn text router :to="{ name: 'table' }">데이터 목록</v-btn>
         <v-btn
           text
           v-if="$store.state.login.isLogin"
