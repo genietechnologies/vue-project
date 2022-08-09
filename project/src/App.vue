@@ -62,6 +62,14 @@
             <v-list-item-title>데이터 목록</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item router :to="{ name: 'chart' }" exact>
+          <v-list-item-action>
+            <v-icon>mdi-list-box</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>chartjs</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar color="indigo" dark fixed app>

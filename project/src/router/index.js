@@ -53,6 +53,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "table" */ "../views/TableView.vue"),
   },
+  {
+    path: "/chart",
+    name: "chart",
+    component: () =>
+      import(/* webpackChunkName: "chart" */ "../views/ChartView.vue"),
+  },
 ];
 
 const router = new VueRouter({
